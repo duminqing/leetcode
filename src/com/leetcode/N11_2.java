@@ -35,6 +35,6 @@ public class N11_2 {
 
     public static void main(String[] args) {
         int[] a = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-        maxArea(a);
+        System.out.println(maxArea(a));
     }
 }
