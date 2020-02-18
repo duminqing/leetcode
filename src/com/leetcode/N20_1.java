@@ -39,7 +39,7 @@ public class N20_1 {
      */
     public static boolean isValid(String s) {
         char[] array = s.toCharArray();
-        Stack<Character> stack = new Stack();
+        Stack<Character> stack = new Stack<>();
         for (char c : array) {
             if (!stack.isEmpty() && ((c == ')' && stack.peek() == '(') || (c == ']' && stack.peek() == '[') || (c == '}' && stack.peek() == '{'))) {
                 stack.pop();
