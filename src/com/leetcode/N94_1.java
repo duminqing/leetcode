@@ -29,7 +29,9 @@ public class N94_1 {
 
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> valueList = new ArrayList<>();
-        if (root == null) return valueList;
+        if (root == null) {
+            return valueList;
+        }
         Stack<TreeNode> stack = new Stack<>();
         TreeNode current = root;
         while (current != null || !stack.isEmpty()) {
