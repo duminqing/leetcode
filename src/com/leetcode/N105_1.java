@@ -28,21 +28,21 @@ public class N105_1 {
     }
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        if(preorder.length ==0 || inorder.length == 0){
+        if (preorder.length == 0 || inorder.length == 0) {
             return null;
         }
-        return buildTree(preorder,0, preorder.length - 1, inorder,0, inorder.length - 1);
+        return buildTree(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
     }
 
 
-    TreeNode buildTree(int[] preorder, int preStart, int preEnd, int[] inorder,int inStart,int inEnd ){
+    TreeNode buildTree(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd) {
         TreeNode treeNode = new TreeNode(preorder[preStart]);
-        if(preStart == preEnd){
+        if (preStart == preEnd) {
             return treeNode;
         }
 
         int nodeIndex = inStart;
-        while (inorder[nodeIndex]!= preorder[preStart] &&nodeIndex<=inEnd){
+        while (inorder[nodeIndex] != preorder[preStart] && nodeIndex <= inEnd) {
             nodeIndex++;
         }
 
