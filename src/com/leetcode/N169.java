@@ -33,7 +33,6 @@ public class N169 {
         int leftCount = countInRange(nums, left, lo, hi);
         int rightCount = countInRange(nums, right, lo, hi);
         return leftCount > rightCount ? left : right;
-
     }
 
     private int countInRange(int[] nums, int num, int lo, int hi) {
