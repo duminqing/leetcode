@@ -44,4 +44,30 @@ public class N46_2 {
             }
         }
     }
+
+    public List<List<Integer>> permute2(int[] nums) {
+        List<List<Integer>> list = new LinkedList<>();
+        boolean[] used = new boolean[nums.length];
+        helper2(nums, used, list, new LinkedList<>());
+        return list;
+
+    }
+
+    private void helper2(int[] nums, boolean[] used, List<List<Integer>> resultList, LinkedList<Integer> list) {
+
+        if (list.size() == nums.length) {
+            resultList.add(new LinkedList<>(list));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (used[i]) {
+                continue;
+            }
+            list.addLast(nums[i]);
+            used[i] = true;
+            helper2(nums, used, resultList, list);
+            list.removeLast();
+            used[i] = false;
+        }
+    }
 }
