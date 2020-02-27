@@ -1,6 +1,6 @@
 package com.leetcode;
 
-public class N70_2 {
+public class N70 {
     /**
      * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
      *
