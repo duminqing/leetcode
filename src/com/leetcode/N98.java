@@ -2,7 +2,7 @@ package com.leetcode;
 
 import com.leetcode.bean.TreeNode;
 
-public class N98_1 {
+public class N98 {
     /**
      * 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
      * <p>

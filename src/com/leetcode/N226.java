@@ -2,7 +2,7 @@ package com.leetcode;
 
 import com.leetcode.bean.TreeNode;
 
-public class N226_1 {
+public class N226 {
     /**
      * 翻转一棵二叉树。
      *

@@ -16,7 +16,7 @@ import java.util.Stack;
  * 链接：https://leetcode-cn.com/problems/largest-rectangle-in-histogram
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class N84_1 {
+public class N84 {
     public int largestRectangleArea(int[] heights) {
         int max = 0;
         Stack<Integer> stack = new Stack<>();

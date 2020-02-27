@@ -27,7 +27,7 @@ import java.util.ArrayDeque;
  * 链接：https://leetcode-cn.com/problems/sliding-window-maximum
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class N239_1 {
+public class N239 {
 
 
     public int[] maxSlidingWindow(int[] nums, int k) {
@@ -62,7 +62,7 @@ public class N239_1 {
     }
 
     public static void main(String[] args) {
-        N239_1 n2391 = new N239_1();
+        N239 n2391 = new N239();
         int[] nums = {7,2,4};
         for (int i : n2391.maxSlidingWindow(nums, 2)) {
             System.out.print(i);

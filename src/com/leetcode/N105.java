@@ -2,7 +2,7 @@ package com.leetcode;
 
 import com.leetcode.bean.TreeNode;
 
-public class N105_1 {
+public class N105 {
     /**
      * 105. 从前序与中序遍历序列构造二叉树
      * 根据一棵树的前序遍历与中序遍历构造二叉树。
@@ -24,7 +24,7 @@ public class N105_1 {
      */
 
 
-    public N105_1() {
+    public N105() {
     }
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
@@ -58,7 +58,7 @@ public class N105_1 {
     }
 
     public static void main(String[] args) {
-        N105_1 n105 = new N105_1();
+        N105 n105 = new N105();
         n105.buildTree(new int[]{3, 9, 8, 12, 20, 15, 7}, new int[]{8, 9, 12, 3, 15, 20, 7});
     }
 }

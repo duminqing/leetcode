@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class N144_1 {
+public class N144 {
     /**
      * 给定一个二叉树，返回它的 前序 遍历。
      *

@@ -2,7 +2,7 @@ package com.leetcode;
 
 import com.leetcode.bean.TreeNode;
 
-public class N236_1 {
+public class N236 {
     /**
      * 236. 二叉树的最近公共祖先
      * 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
@@ -35,7 +35,7 @@ public class N236_1 {
 
     private TreeNode ans;
 
-    public N236_1() {
+    public N236() {
         // Variable to store LCA node.
         this.ans = null;
     }

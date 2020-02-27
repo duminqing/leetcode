@@ -2,7 +2,7 @@ package com.leetcode;
 
 import java.util.Stack;
 
-public class N20_1 {
+public class N20 {
     /**
      * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
      * <p>

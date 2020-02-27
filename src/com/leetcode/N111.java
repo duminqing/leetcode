@@ -2,7 +2,7 @@ package com.leetcode;
 
 import com.leetcode.bean.TreeNode;
 
-public class N111_1 {
+public class N111 {
     /**
      * 给定一个二叉树，找出其最小深度。
      * <p>

@@ -1,6 +1,6 @@
 package com.leetcode;
 
-public class N50_1 {
+public class N50 {
     /**
      * 50. Pow(x, n)
      * 实现 pow(x, n) ，即计算 x 的 n 次幂函数。

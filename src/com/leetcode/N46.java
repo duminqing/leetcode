@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class N46_1 {
+public class N46 {
     /**
      * 46. 全排列
      * 给定一个没有重复数字的序列，返回其所有可能的全排列。
@@ -47,7 +47,7 @@ public class N46_1 {
     }
 
     public static void main(String[] args) {
-        N46_1 n46 = new N46_1();
+        N46 n46 = new N46();
         n46.permute(new int[]{1, 2, 3});
     }
 }

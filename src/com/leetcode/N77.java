@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class N77_1 {
+public class N77 {
     /**
      * 77. 组合
      * 给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。
@@ -42,7 +42,7 @@ public class N77_1 {
     }
 
     public static void main(String[] args) {
-        N77_1 n77 = new N77_1();
+        N77 n77 = new N77();
         System.out.println(n77.combine(4, 2));
     }
 }

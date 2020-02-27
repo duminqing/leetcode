@@ -1,6 +1,6 @@
 package com.leetcode;
 
-public class N242_1 {
+public class N242 {
     public boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) {
             return false;
