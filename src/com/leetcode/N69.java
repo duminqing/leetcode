@@ -24,7 +24,7 @@ public class N69 {
     /**
      * 二分法：基于 x的平方根在 2到x/2中
      */
-    class Solution {
+    static class Solution {
         public int mySqrt(int x) {
             if (x < 2) {
                 return x;
@@ -34,7 +34,7 @@ public class N69 {
 
             while (left <= right) {
                 int pivot = left + (right - left) / 2;
-                num = pivot * pivot;
+                num = (long) pivot * pivot;
                 if (num > x) {
                     right = pivot - 1;
                 } else if (num < x) {
@@ -45,5 +45,10 @@ public class N69 {
             }
             return right;
         }
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.mySqrt(2147395599));
     }
 }
