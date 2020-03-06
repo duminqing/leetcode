@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.leetcode2;
 
 public class N283_2 {
     /**
