@@ -43,10 +43,7 @@ public class N123 {
             for (int i = 0; i < prices.length; i++) {
                 for (int k = 0; k < 2; k++) {
                     if (i == 0 || k == 0) {
-                        if (i == 0 && k == 0) {
-                            dp[0][0][0] = 0;
-                            dp[0][0][1] = -prices[0];
-                        } else if (i == 0) {
+                        if (i == 0) {
                             dp[0][k][0] = 0;
                             dp[0][k][1] = -prices[0];
                         } else {
