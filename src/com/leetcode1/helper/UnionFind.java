@@ -12,7 +12,7 @@ public class UnionFind {
         }
     }
 
-    public int find(int i) {
+    private int find(int i) {
         while (parent[i] != i) {
             parent[i] = parent[parent[i]];
             i = parent[i];
