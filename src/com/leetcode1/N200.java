@@ -101,7 +101,6 @@ public class N200 {
                                 deque.addLast(x * col + y - 1);
                                 grid[x][y - 1] = '0';
                             }
-                            System.out.println(" lalal "+ (y + 1) + " " + x);
                             if (y + 1 < col && grid[x][y + 1] == '1') {
                                 deque.addLast(x * col + y + 1);
                                 grid[x][y + 1] = '0';
@@ -115,14 +114,85 @@ public class N200 {
 
     }
 
+    /**
+     * 使用查并集
+     */
+    static class Solution3 {
+        static class UnionFind {
+            private int count;
+            private int[] parent;
+
+            public UnionFind(char[][] grid) {
+                int row = grid.length;
+                int col = grid[0].length;
+                parent = new int[row * col];
+                for (int i = 0; i < row; i++) {
+                    for (int j = 0; j < col; j++) {
+                        if (grid[i][j] == '1') {
+                            parent[i * col + j] = i * col + j;
+                            count++;
+                        }
+                    }
+                }
+            }
+
+            private int find(int i) {
+                while (parent[i] != i) {
+                    parent[i] = parent[parent[i]];
+                    i = parent[i];
+                }
+                return i;
+            }
+
+            public void union(int i, int j) {
+                int ii = find(i);
+                int jj = find(j);
+                if (ii != jj) {
+                    parent[ii] = jj;
+                    count--;
+                }
+            }
+
+            public int getCount() {
+                return count;
+            }
+        }
+
+        public int numIslands(char[][] grid) {
+            int row = grid.length;
+            int col = grid[0].length;
+            UnionFind unionFind = new UnionFind(grid);
+            for (int x = 0; x < row; x++) {
+                for (int y = 0; y < col; y++) {
+                    if (grid[x][y] == '1') {
+                        grid[x][y] = '0';
+                        if (x - 1 >= 0 && grid[x - 1][y] == '1') {
+                            unionFind.union(x * col + y, (x - 1) * col + y);
+                        }
+                        if (x + 1 < row && grid[x + 1][y] == '1') {
+                            unionFind.union(x * col + y, (x + 1) * col + y);
+                        }
+                        if (y - 1 >= 0 && grid[x][y - 1] == '1') {
+                            unionFind.union(x * col + y, x * col + y - 1);
+                        }
+                        if (y + 1 < col && grid[x][y + 1] == '1') {
+                            unionFind.union(x * col + y, x * col + y + 1);
+                        }
+                    }
+                }
+            }
+            return unionFind.getCount();
+        }
+    }
+
     public static void main(String[] args) {
-        Solution2 solution2 = new Solution2();
+        Solution3 solution2 = new Solution3();
         char[][] grid = new char[4][5];
         grid[0] = "11000".toCharArray();
         grid[1] = "11000".toCharArray();
         grid[2] = "00100".toCharArray();
         grid[3] = "00011".toCharArray();
-        solution2.numIslands(grid);
-
+        int x = solution2.numIslands(grid);
+        System.out.println(x);
     }
 }
