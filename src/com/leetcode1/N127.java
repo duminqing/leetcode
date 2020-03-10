@@ -92,9 +92,71 @@ public class N127 {
         }
     }
 
+    /**
+     * 双向BFS
+     */
+    static class Solution2 {
+        public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
+            if (!wordList.contains(endWord)) {
+                return 0;
+            }
+            wordList.add(beginWord);
+            // 从两端BFS遍历要用的队列
+            Queue<String> queue1 = new LinkedList<>();
+            Queue<String> queue2 = new LinkedList<>();
+            queue1.offer(beginWord);
+            queue2.offer(endWord);
+            // 两端已经遍历过的节点
+            Set<String> visited1 = new HashSet<>();
+            Set<String> visited2 = new HashSet<>();
+            visited1.add(beginWord);
+            visited2.add(endWord);
+
+            int count = 0;
+            Set<String> allWordSet = new HashSet<>(wordList);
+
+            while (!queue1.isEmpty() && !queue2.isEmpty()) {
+                count++;
+                if (queue1.size() > queue2.size()) {
+                    Queue<String> tmpQueue = queue1;
+                    queue1 = queue2;
+                    queue2 = tmpQueue;
+
+                    Set<String> tmpSet = visited1;
+                    visited1 = visited2;
+                    visited2 = tmpSet;
+                }
+                int size1 = queue1.size();
+                while (size1-- > 0) {
+                    String s = queue1.remove();
+                    char[] chars = s.toCharArray();
+                    for (int j = 0; j < chars.length; j++) {
+                        char c0 = chars[j];
+                        for (char c = 'a'; c < 'z'; c++) {
+                            chars[j] = c;
+                            String newS = new String(chars);
+                            if (visited1.contains(newS)) {
+                                continue;
+                            }
+                            if (visited2.contains(newS)) {
+                                return count + 1;
+                            }
+                            if (allWordSet.contains(newS)) {
+                                queue1.offer(newS);
+                                visited1.add(newS);
+                            }
+                        }
+                        chars[j] = c0;
+                    }
+                }
+            }
+            return 0;
+        }
+    }
+
     public static void main(String[] args) {
 
-        System.out.println(Solution.ladderLength("a", "b", Arrays.asList("a", "b", "c")));
-        System.out.println(Solution.ladderLength("hi", "ge", Arrays.asList("hi", "ge")));
+        System.out.println(Solution2.ladderLength("a", "b", new ArrayList<>(Arrays.asList("a", "b", "c"))));
+        System.out.println(Solution2.ladderLength("hi", "ge",new ArrayList<>( Arrays.asList("hi", "ge"))));
     }
 }
