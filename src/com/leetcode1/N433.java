@@ -93,8 +93,81 @@ public class N433 {
         }
     }
 
+    /**
+     * 双向BDF
+     */
+    static class Solution2 {
+        static public int minMutation(String start, String end, String[] bank) {
+            if (bank.length == 0) {
+                return -1;
+            }
+            Set<String> bankSet = new HashSet<>(Arrays.asList(bank));
+            if (!bankSet.contains(end)) {
+                return -1;
+            }
+            bankSet.add(start);
+
+            char[] gene = new char[]{'A', 'C', 'G', 'T'};
+            // ************************************
+            Queue<String> queue1 = new LinkedList<>();
+            Set<String> visited1 = new HashSet<>();
+            queue1.add(start);
+            visited1.add(start);
+
+            Queue<String> queue2 = new LinkedList<>();
+            Set<String> visited2 = new HashSet<>();
+            queue2.add(end);
+            visited2.add(end);
+
+            int count = 0;
+            while (!queue1.isEmpty() && !queue2.isEmpty()) {
+                count++;
+                if (queue1.size() > queue2.size()) {
+                    Queue<String> queue = queue2;
+                    queue2 = queue1;
+                    queue1 = queue;
+
+                    Set<String> visited = visited2;
+                    visited2 = visited1;
+                    visited1 = visited;
+                }
+//                System.out.println("queue1 = " + queue1);
+//                System.out.println("queue2 = " + queue2);
+//                System.out.println("visited1 = " + visited1);
+//                System.out.println("visited2 = " + visited2);
+                int size = queue1.size();
+                while (size-- > 0) {
+                    String s = queue1.remove();
+                    char[] chars = s.toCharArray();
+                    for (int i = 0; i < chars.length; i++) {
+                        char c0 = chars[i];
+                        for (char c : gene) {
+                            chars[i] = c;
+                            String newGene = new String(chars);
+//                            System.out.println("newGene = " + newGene);
+                            if (visited1.contains(newGene)) {
+                                continue;
+                            }
+                            if (visited2.contains(newGene)) {
+//                                System.out.println("hhhhhh");
+                                return count;
+                            }
+                            if (bankSet.contains(newGene)) {
+                                visited1.add(newGene);
+                                queue1.add(newGene);
+                            }
+                        }
+                        chars[i] = c0;
+                    }
+                }
+            }
+            // ************************************
+            return -1;
+        }
+    }
+
     public static void main(String[] args) {
-        int x = Solution.minMutation("AACCTTGG", "AATTCCGG", new String[]{"AATTCCGG", "AACCTGGG", "AACCCCGG", "AACCTACC"});
+        int x = Solution2.minMutation("AAAAAAAA", "CCCCCCCC", new String[]{"AAAAAAAC", "AAAAAACC", "AAAAACCC", "AAAACCCC", "AAACCCCC", "AACCCCCC", "ACCCCCCC", "CCCCCCCC"});
         System.out.println(x);
     }
 }
