@@ -38,6 +38,9 @@ import java.util.*;
  * 解释: endWord "cog" 不在字典中，所以无法进行转换。
  */
 public class N127 {
+    /**
+     * 广度优先算法
+     */
     static class Solution {
         public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
             if (!wordList.contains(endWord)) {
