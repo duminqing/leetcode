@@ -49,6 +49,6 @@ public class N917 {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Solution().reverseOnlyLetters("7_28]"));
+        System.out.println(new Solution().reverseOnlyLetters("Test1ng-Leet=code-Q!"));
     }
 }
