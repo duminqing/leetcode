@@ -1,8 +1,9 @@
 package com.leetcode1;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 438. 找到字符串中所有字母异位词
@@ -40,8 +41,48 @@ import java.util.List;
  */
 public class N438 {
     public static void main(String[] args) {
-        List x = new Solution().findAnagrams("abcabc", "abc");
+        List x = new Solution2().findAnagrams("aacbaa", "aab");
         System.out.println(x);
+    }
+
+    /**
+     * 使用滑动窗口解决
+     */
+    static class Solution2 {
+        public List<Integer> findAnagrams(String s, String p) {
+            List<Integer> list = new ArrayList<>();
+            int left = 0, right = 0;
+            Map<Character, Integer> window = new HashMap<>();
+            Map<Character, Integer> needs = new HashMap<>();
+            for (Character c : p.toCharArray()) {
+                needs.merge(c, 1, Integer::sum);
+            }
+            int match = 0;
+            while (right < s.length()) {
+                char c1 = s.charAt(right);
+                if (needs.containsKey(c1)) {
+                    window.merge(c1, 1, Integer::sum);
+                    if (window.get(c1).intValue() == needs.get(c1)) {
+                        match++;
+                    }
+                }
+                right++;
+                while (match == needs.size()) {
+                    if (right - left == p.length()) {
+                        list.add(left);
+                    }
+                    char c2 = s.charAt(left);
+                    if (needs.containsKey(c2)) {
+                        window.merge(c2, -1, Integer::sum);
+                        if (window.get(c2) < needs.get(c2)) {
+                            match--;
+                        }
+                    }
+                    left++;
+                }
+            }
+            return list;
+        }
     }
 
     static class Solution {
