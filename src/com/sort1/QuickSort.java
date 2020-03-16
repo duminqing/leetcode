@@ -1,4 +1,6 @@
-package com.sort;
+package com.sort1;
+
+import com.sort.Sort;
 
 public class QuickSort extends Sort {
     @Override

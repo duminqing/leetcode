@@ -1,4 +1,6 @@
-package com.sort;
+package com.sort1;
+
+import com.sort.Sort;
 
 public class CountingSort extends Sort {
     @Override
