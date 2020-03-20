@@ -27,13 +27,37 @@ package com.leetcode1;
  * 输出: 0
  * 解释: 在这个情况下, 没有交易完成, 所以最大利润为 0。
  */
-public class N123_TODO {
+public class N123 {
+    public static void main(String[] args) {
+        int x = new Solution().maxProfit(new int[]{15, 4, 3});
 
-    class Solution {
+        System.out.println(x);
+    }
+
+    static class Solution {
         public int maxProfit(int[] prices) {
+            if (prices.length == 0) {
+                return 0;
+            }
+            int[][][] dp = new int[prices.length][2][2];
+            for (int i = 0; i < prices.length; i++) {
+                for (int k = 0; k < 2; k++) {
+                    if (i == 0 || k == 0) {
+                        if (i == 0) {
+                            dp[0][k][0] = 0;
+                            dp[0][k][1] = -prices[0];
+                        } else {
+                            dp[i][0][0] = Math.max(dp[i - 1][0][0], dp[i - 1][k][1] + prices[i]);
+                            dp[i][0][1] = Math.max(dp[i - 1][0][1], -prices[i]);
+                        }
+                        continue;
+                    }
+                    dp[i][k][0] = Math.max(dp[i - 1][k][0], dp[i - 1][k][1] + prices[i]);
+                    dp[i][k][1] = Math.max(dp[i - 1][k][1], dp[i - 1][k - 1][0] - prices[i]);
+                }
+            }
 
-
-            return 0;
+            return dp[prices.length - 1][1][0];
 
         }
     }
