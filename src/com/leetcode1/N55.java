@@ -23,7 +23,7 @@ public class N55 {
     /**
      * 最佳算法：贪心算法
      */
-    class Solution0 {
+    static class Solution0 {
         public boolean canJump(int[] nums) {
             int lastPos = nums.length - 1;
             for (int i = nums.length - 1; i >= 0; i--) {
@@ -39,7 +39,7 @@ public class N55 {
     /**
      * 回溯
      */
-    class Solution1 {
+    static class Solution1 {
         public boolean canJump(int[] nums) {
             return canJumpFromPosition(0, nums);
         }
@@ -59,6 +59,53 @@ public class N55 {
     }
 
     /**
-     * TODO 动态规划
+     * 动态规划
      */
+    static class Solution2 {
+        public boolean canJump(int[] nums) {
+            int[] dp = new int[nums.length];
+            for (int i = 0; i < nums.length - 1; i++) {
+                if (i == 0) {
+                    dp[i] = nums[0];
+                } else {
+                    dp[i] = Math.max(dp[i - 1], nums[i] + i);
+                }
+                if (dp[i] < i + 1) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    /**
+     * 动态规划 优化内存
+     */
+    static class Solution3 {
+        public boolean canJump(int[] nums) {
+            if (nums.length == 1) {
+                return true;
+            }
+            int last = nums[0];
+            for (int i = 1; i < nums.length - 1; i++) {
+                if (last < i) { //如果上一次跳不到该位置则失败
+                    return false;
+                }
+                last = Math.max(last, nums[i] + i);
+            }
+            return last >= nums.length - 1;
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Solution2().canJump(new int[]{2, 3, 1, 1, 4}));
+
+        System.out.println(new Solution2().canJump(new int[]{3, 2, 1, 0, 4}));
+
+        System.out.println(new Solution2().canJump(new int[]{0, 3, 2}));
+        System.out.println(new Solution2().canJump(new int[]{1, 0, 1, 0}));
+        System.out.println(new Solution2().canJump(new int[]{1, 2}));
+        System.out.println(new Solution2().canJump(new int[]{0}));
+        System.out.println(new Solution2().canJump(new int[]{0, 1}));
+    }
 }
