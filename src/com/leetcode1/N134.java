@@ -48,10 +48,33 @@ package com.leetcode1;
 public class N134 {
 
     public static void main(String[] args) {
-        int x = new Solution().canCompleteCircuit(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 5, 1, 2});
+        int x = new Solution2().canCompleteCircuit(new int[]{5, 1, 2, 3, 4}, new int[]{4, 4, 1, 5, 1});
         System.out.println(x);
     }
 
+    /**
+     * 贪婪
+     */
+    static class Solution2 {
+        public int canCompleteCircuit(int[] gas, int[] cost) {
+            int totalTank = 0;
+            int currTank = 0;
+            int startPosition = 0;
+            for (int i = 0; i < gas.length; i++) {
+                totalTank += gas[i] - cost[i];
+                currTank += gas[i] - cost[i];
+                if (currTank < 0) {
+                    currTank = 0;
+                    startPosition = 1;
+                }
+            }
+            return totalTank >= 0 ? startPosition : -1;
+        }
+    }
+
+    /**
+     * 暴力
+     */
     static class Solution {
         public int canCompleteCircuit(int[] gas, int[] cost) {
             int from = -1;
@@ -71,4 +94,21 @@ public class N134 {
             return from;
         }
     }
+
+    /**
+     * {
+     *             int totalTank = 0;
+     *             int currTank = 0;
+     *             int startStation = 0;
+     *             for (int i = 0; i < gas.length; i++) {
+     *                 totalTank += gas[i] - cost[i];
+     *                 currTank += gas[i] - cost[i];
+     *                 if (currTank < 0) {
+     *                     startStation = i + 1;
+     *                     currTank = 0;
+     *                 }
+     *             }
+     *             return totalTank >= 0 ? startStation : -1;
+     *         }
+     */
 }
