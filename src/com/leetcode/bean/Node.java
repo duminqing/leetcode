@@ -1,5 +1,6 @@
 package com.leetcode.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Node {
@@ -9,13 +10,33 @@ public class Node {
     public Node() {
     }
 
-    public Node(int _val) {
-        val = _val;
+    public Node(int val) {
+        this.val = val;
+        children = new ArrayList<>();
     }
 
-    public Node(int _val, List<Node> _children) {
-        val = _val;
-        children = _children;
+    public Node(int val, List<Node> children) {
+        this.val = val;
+        this.children = children;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Node node = (Node) o;
+
+        return val == node.val;
+    }
+
+    @Override
+    public int hashCode() {
+        return val;
     }
 }
 
