@@ -1,6 +1,8 @@
 package com.leetcode1;
 
+import java.util.Collections;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 /**
  * 739. 每日温度
@@ -18,6 +20,7 @@ public class N739 {
         for (int k : x) {
             System.out.print(k + " ");
         }
+
     }
 
     /**
