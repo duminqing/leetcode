@@ -54,11 +54,11 @@ public class N721 {
                 }
             }
 
-            public int find(int x) {
-                if (parent[x] != x) {
-                    parent[x] = find(parent[x]);
+            public int find(int n) {
+                if (parent[n] != n) {
+                    parent[n] = find(parent[n]);
                 }
-                return parent[x];
+                return parent[n];
             }
 
             public void union(int x, int y) {
