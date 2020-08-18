@@ -7,7 +7,7 @@ public class TestCaseSynchronousBlockingQueue {
         SynchronousQueue<Integer> queue = new SynchronousQueue<>(true);
         ExecutorService executorService = new ThreadPoolExecutor(10, 10, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
         for (int i = 0; i < 5; i++) {
-            Thread.sleep(1000);
+            // Thread.sleep(1000);
 
             int finalI = i;
             executorService.submit(() -> {
@@ -19,9 +19,14 @@ public class TestCaseSynchronousBlockingQueue {
             });
         }
         for (int i = 0; i < 5; i++) {
-            Thread.sleep(1000);
+
 
             executorService.submit(() -> {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 try {
                     int a = queue.take();
                     System.out.println(a);
